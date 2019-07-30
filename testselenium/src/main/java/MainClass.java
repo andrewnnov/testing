@@ -13,19 +13,23 @@ public class MainClass {
         WebDriver driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        //driver.get("https://ru.wikipedia.org");
-        //driver.findElement(By.xpath("//*[@id=\"searchButton\"]")).click();
+        driver.get("https://ru.wikipedia.org");
+        driver.findElement(By.xpath("//*[@id=\"searchInput\"]")).sendKeys("Selenium WebDriver");
+        driver.findElement(By.xpath("//*[@id=\"searchButton\"]")).click();
+        String value = driver.findElement(By.xpath("//*[@id=\"ooui-php-1\"]")).getAttribute("value");
+        System.out.println(value);
+        driver.findElement(By.xpath("//*[@id=\"ooui-php-1\"]")).clear();
 
         driver.get("https://github.com/");
-        WebElement elementButton = driver.findElement(By.xpath("/html/body/div[4]/main/div[1]/div/div/div[2]/div/form/button"));
-        if(elementButton.getText().equals("Sign up for GitHub")) {
-            System.out.println("Success");
-        } else {
-            System.out.println("Fail");
-        }
+        driver.findElement(By.xpath("//*[@id=\"user[login]\"]")).sendKeys("TestUserName1");
+        driver.findElement(By.xpath("//*[@id=\"user[email]\"]")).sendKeys("testEmail1");
+        driver.findElement(By.xpath("//*[@id=\"user[password]\"]")).sendKeys("testPass1");
 
-        System.out.println("text button is: " + elementButton.getText());
+        WebElement elementButton = driver.findElement(By.xpath("/html/body/div[4]/main/div[1]/div/div/div[2]/div/form/button"));
         elementButton.submit();
+        String valueGit = driver.findElement(By.xpath("//*[@id=\"user_login\"]")).getAttribute("value");
+        System.out.println(valueGit);
+
 
         //driver.quit();
 
