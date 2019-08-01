@@ -13,22 +13,17 @@ public class MainClass {
         WebDriver driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://ru.wikipedia.org");
-        driver.findElement(By.xpath("//*[@id=\"searchInput\"]")).sendKeys("Selenium WebDriver");
-        driver.findElement(By.xpath("//*[@id=\"searchButton\"]")).click();
-        String value = driver.findElement(By.xpath("//*[@id=\"ooui-php-1\"]")).getAttribute("value");
-        System.out.println(value);
-        driver.findElement(By.xpath("//*[@id=\"ooui-php-1\"]")).clear();
+        driver.get("https://en.wikipedia.org");
 
-        driver.get("https://github.com/");
-        driver.findElement(By.xpath("//*[@id=\"user[login]\"]")).sendKeys("TestUserName1");
-        driver.findElement(By.xpath("//*[@id=\"user[email]\"]")).sendKeys("testEmail1");
-        driver.findElement(By.xpath("//*[@id=\"user[password]\"]")).sendKeys("testPass1");
+        WebElement link = driver.findElement(By.xpath("/html/body/div[4]/div[2]/div[3]/div/ul/li[2]/a"));
 
-        WebElement elementButton = driver.findElement(By.xpath("/html/body/div[4]/main/div[1]/div/div/div[2]/div/form/button"));
-        elementButton.submit();
-        String valueGit = driver.findElement(By.xpath("//*[@id=\"user_login\"]")).getAttribute("value");
-        System.out.println(valueGit);
+        System.out.println(link.getText());
+        link.click();
+
+        driver.get("https://www.facebook.com");
+        WebElement linkFB = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div/div/div/div[2]/form/table/tbody/tr[3]/td[2]/div/a"));
+        linkFB.click();
+
 
 
         //driver.quit();
