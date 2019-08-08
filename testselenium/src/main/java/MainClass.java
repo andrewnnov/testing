@@ -14,49 +14,19 @@ public class MainClass {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
-        driver.get("https://gsuite.google.com/signup/basic/welcome");
-        driver.findElement(By.xpath("/html/body/c-wiz/div[2]/div[2]/section/div/div[1]/div[1]/c-wiz[5]/div/div[2]/div[1]/div[1]/div[1]/div[1]")).click();
-        driver.findElement(By.xpath("/html/body/c-wiz/div[2]/div[2]/section/div/div[1]/div[1]/c-wiz[5]/div/div[2]/div[1]/div[2]/div[6]/span")).click();
+        driver.get("https://www.w3schools.com/html/html_tables.asp");
+        ///html/body/div[6]/div[1]/div[1]/div[3]/div
 
+        WebElement tableElement = driver.findElement(By.xpath("/html/body/div[6]/div[1]/div[1]/div[3]/div"));
 
-        //driver.get("https://market.yandex.ru/");
+        Table table = new Table(tableElement, driver);
+        System.out.println("Rows number is: " + table.getRows().size());
+        System.out.println(table.getValueFromCell(2, 3));
+        System.out.println(table.getValueFromCell(4, 1));
 
-
-//        driver.findElement(By.xpath("/html/body/div[1]/div/span/div[2]/noindex/div[2]/div/div/div/div[3]/a/span")).click();
-//        driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[7]/div/div/div[1]/div/div/div/div/div/div/div[2]" +
-//                "/div[2]/ul/li[1]/div/a")).click();
-//
-//        //проверка выделен ли чек бокс
-//        System.out.println(driver.findElement(By.xpath("//label[text()='Производитель ATLANT']/preceding-sibling::span/input")).isSelected());
-//        //веделяем чек бокс
-//        driver.findElement(By.xpath("//label[text()='ATLANT']/preceding-sibling::span/input")).click();
-//
-//        //снова проееряем чекбокс
-//        System.out.println(driver.findElement(By.xpath("//label[text()='ATLANT']/preceding-sibling::span/input")).isSelected());
-//
-//
-//
-//
-//        driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[2]/div/div/div/div[3]/div/div[2]/div[3]/fieldset/ul/li[2]/div/a/label/div")).click();
-//
-//        driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[2]/div/div/div/div[3]/div/div[2]/div[3]/fieldset/ul/li[3]/div/a/label/div")).click();
-//
-//
-//        System.out.println(driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[2]/div/div/div/div[3]/div/div[2]/div[22]/fieldset/ul/li[1]/div/label/div")).isSelected());
-//
-//        driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[2]/div/div/div/div[3]/div/div[2]/div[22]/fieldset/ul/li[1]/div/label/div")).click();
-//
-//        System.out.println(driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[2]/div/div/div/div[3]/div/div[2]/div[22]/fieldset/ul/li[1]/div/label/div")).isSelected());
-//
-//
-//        driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div[2]/div/div/div/div[3]/div/div[2]/div[22]/fieldset/ul/li[2]/div/label/div")).click();
-
-
-
-
-
-
-
+        System.out.println(table.getValueFromCell(4, "Company"));
+        System.out.println(table.getValueFromCell(1, "Country"));
+        System.out.println(table.getValueFromCell(2, "Contact"));
 
 
         //driver.quit();
